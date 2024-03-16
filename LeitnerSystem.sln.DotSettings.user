@@ -1,26 +1,26 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=19ad7c0e_002Dbc0a_002D4eea_002D8176_002D3a13524d8561/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="CardTests" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
-  &lt;TestAncestor&gt;&#xD;
-    &lt;TestId&gt;xUnit::7FE70013-2F18-44FF-859F-74747B6D51DA::net8.0::Tests.CardTests&lt;/TestId&gt;&#xD;
-  &lt;/TestAncestor&gt;&#xD;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=19ad7c0e_002Dbc0a_002D4eea_002D8176_002D3a13524d8561/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="CardTests" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+  &lt;TestAncestor&gt;
+    &lt;TestId&gt;xUnit::7FE70013-2F18-44FF-859F-74747B6D51DA::net8.0::Tests.CardTests&lt;/TestId&gt;
+  &lt;/TestAncestor&gt;
 &lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=87a00e6f_002Da3d7_002D4d10_002D90bb_002Dc1ec0c2b62b2/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="NextReviewDate_ForCategoryOne_ShouldBeTomorrow" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
-  &lt;TestAncestor&gt;&#xD;
-    &lt;TestId&gt;xUnit::7FE70013-2F18-44FF-859F-74747B6D51DA::net8.0::Tests.CardTests&lt;/TestId&gt;&#xD;
-  &lt;/TestAncestor&gt;&#xD;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=87a00e6f_002Da3d7_002D4d10_002D90bb_002Dc1ec0c2b62b2/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="NextReviewDate_ForCategoryOne_ShouldBeTomorrow" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+  &lt;TestAncestor&gt;
+    &lt;TestId&gt;xUnit::7FE70013-2F18-44FF-859F-74747B6D51DA::net8.0::Tests.Domain.CardTests.Card_Next_Review_Date_Should_Be_Set_Correctly&lt;/TestId&gt;
+  &lt;/TestAncestor&gt;
 &lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=a43d5b18_002D6b3e_002D4416_002Da095_002D3051ff312e4a/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="CardTests #3" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
-  &lt;TestAncestor&gt;&#xD;
-    &lt;TestId&gt;xUnit::7FE70013-2F18-44FF-859F-74747B6D51DA::net8.0::Tests.CardTests&lt;/TestId&gt;&#xD;
-  &lt;/TestAncestor&gt;&#xD;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=a43d5b18_002D6b3e_002D4416_002Da095_002D3051ff312e4a/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="CardTests #3" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+  &lt;TestAncestor&gt;
+    &lt;TestId&gt;xUnit::7FE70013-2F18-44FF-859F-74747B6D51DA::net8.0::Tests.CardTests&lt;/TestId&gt;
+  &lt;/TestAncestor&gt;
 &lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=c6c9a86e_002D8e82_002D4eaa_002Db062_002Dae51267bf71b/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="CardTests #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
-  &lt;TestAncestor&gt;&#xD;
-    &lt;TestId&gt;xUnit::7FE70013-2F18-44FF-859F-74747B6D51DA::net8.0::Tests.CardTests&lt;/TestId&gt;&#xD;
-  &lt;/TestAncestor&gt;&#xD;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=c6c9a86e_002D8e82_002D4eaa_002Db062_002Dae51267bf71b/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="CardTests #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+  &lt;TestAncestor&gt;
+    &lt;TestId&gt;xUnit::7FE70013-2F18-44FF-859F-74747B6D51DA::net8.0::Tests.CardTests&lt;/TestId&gt;
+  &lt;/TestAncestor&gt;
 &lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=cad7283b_002D50ac_002D4f06_002D846a_002Dd254ae984b9d/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="Card_ShouldBeScheduledForReview_AfterPromotion" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
-  &lt;TestAncestor&gt;&#xD;
-    &lt;TestId&gt;xUnit::7FE70013-2F18-44FF-859F-74747B6D51DA::net8.0::Tests.CardTests&lt;/TestId&gt;&#xD;
-  &lt;/TestAncestor&gt;&#xD;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=cad7283b_002D50ac_002D4f06_002D846a_002Dd254ae984b9d/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="Card_ShouldBeScheduledForReview_AfterPromotion" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+  &lt;TestAncestor&gt;
+    &lt;TestId&gt;xUnit::7FE70013-2F18-44FF-859F-74747B6D51DA::net8.0::Tests.Domain.CardTests&lt;/TestId&gt;
+  &lt;/TestAncestor&gt;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>

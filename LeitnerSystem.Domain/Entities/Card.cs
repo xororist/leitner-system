@@ -26,7 +26,14 @@ public sealed class Card
     {
         if (userAnswer.Trim().Equals(Answer.Text.Trim(), StringComparison.OrdinalIgnoreCase))
         {
-            Promote();
+            if (Category == Category.DONE)
+            {
+                Metadata.SetAsCompleted();
+            }
+            else
+            {
+                Promote();
+            }
         }
         else
         {

@@ -7,6 +7,65 @@ namespace Tests.Domain;
 
 public class CardTests
 {
+    [Theory]
+    [InlineData(Category.FIRST, 0)] 
+    [InlineData(Category.SECOND, 1)] 
+    [InlineData(Category.THIRD, 2)] 
+    [InlineData(Category.FOURTH, 4)] 
+    [InlineData(Category.FIFTH, 8)]
+    [InlineData(Category.SIXTH, 16)]
+    [InlineData(Category.SEVENTH, 32)]
+    public void Card_Next_Review_Date_Should_Be_Set_Correctly_After_Promotion(Category nextCategory, int daysUntilNextReview)
+    {
+        // Arrange
+        var card = new Card(new Question("Simple Question"), new Answer("Simple Answer"), "Simple Tag");
+        var today = DateTime.Now.Date;
+
+        // Act
+        while (card.Category < nextCategory)
+        {
+            card.Promote();
+        }
+
+        // Assert
+        var expectedReviewDate = today.AddDays(daysUntilNextReview);
+        card.Metadata.NextDateQuestion.Date.Should().Be(expectedReviewDate);
+    }
+    
+    [Fact]
+    public void Card_Next_Review_Date_Should_Be_Set_To_64_And_Done_Category()
+    {
+        // Arrange
+        var card = new Card(new Question("What is the meaning of life?"), new Answer("42"), "Philosophy");
+
+        // Act
+        while (card.Category < Category.DONE)
+        {
+            card.Promote();
+        }
+        card.Promote();
+        var expectedReviewDate = DateTime.Now.Date.AddDays(64);
+
+        // Assert
+        card.Metadata.NextDateQuestion.Should().Be(expectedReviewDate);
+    }
+
+    [Fact]
+    public void Card_Should_Be_Considered_Done_After_Final_Promotion()
+    {
+        // Arrange
+        var card = new Card(new Question("Final Question"), new Answer("Final Answer"), "Final Tag");
+
+        // Act
+        while (card.Category < Category.DONE)
+        {
+            card.Promote();
+        }
+
+        // Assert
+        card.Category.Should().Be(Category.DONE);
+    }
+    
     [Fact]
     public void Card_Should_Be_Promoted_To_Next_Category()
     {

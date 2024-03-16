@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "rOBKBXGUnnmjelF/UJbvqzOgg+PVQuWarT9Af+D7DsQi65eordnvm9lfz44EJky10BnnGBidePzxAk/VOjph5g==",
+  "dgSpecHash": "RoJNLPxH2MmtlLy8bZ8sazhglZPjNW6ozhuFV2hey1Asg2rS7uYoGGB4gv0Qd9BuYNS/IR0gKbiR34DfzTDveA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\hcachon\\RiderProjects\\LeitnerSystem\\LeitnerSystem.Domain\\LeitnerSystem.Domain.csproj",
+  "projectFilePath": "/home/hugo/Desktop/ESGI/clean-code/leitner-system/LeitnerSystem.Domain/LeitnerSystem.Domain.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
