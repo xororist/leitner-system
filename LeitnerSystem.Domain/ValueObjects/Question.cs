@@ -1,6 +1,6 @@
 namespace LeitnerSystem.Domain.ValueObjects;
 
-public sealed class Question
+public class Question
 {
     public string Text { get; private set; }
 

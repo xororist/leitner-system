@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeitnerSystem.Domain", "Lei
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{7FE70013-2F18-44FF-859F-74747B6D51DA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeitnerSystem.Application", "LeitnerSystem.Application\LeitnerSystem.Application.csproj", "{1B093FB9-DEC5-41B8-971B-0C631C611F97}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{7FE70013-2F18-44FF-859F-74747B6D51DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7FE70013-2F18-44FF-859F-74747B6D51DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7FE70013-2F18-44FF-859F-74747B6D51DA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1B093FB9-DEC5-41B8-971B-0C631C611F97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B093FB9-DEC5-41B8-971B-0C631C611F97}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B093FB9-DEC5-41B8-971B-0C631C611F97}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B093FB9-DEC5-41B8-971B-0C631C611F97}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

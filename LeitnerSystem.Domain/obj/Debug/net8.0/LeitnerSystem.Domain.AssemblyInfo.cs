@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("LeitnerSystem.Domain")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8c6aa60d6e9462771ae9302d6a858a786a2f2fc9")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b2be1c6a7d81469822b11a09e56b641a3efdb5db")]
 [assembly: System.Reflection.AssemblyProductAttribute("LeitnerSystem.Domain")]
 [assembly: System.Reflection.AssemblyTitleAttribute("LeitnerSystem.Domain")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

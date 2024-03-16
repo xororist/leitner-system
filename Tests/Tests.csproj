@@ -25,4 +25,8 @@
       <ProjectReference Include="..\LeitnerSystem.Domain\LeitnerSystem.Domain.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Application\" />
+    </ItemGroup>
+
 </Project>

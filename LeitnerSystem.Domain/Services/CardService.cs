@@ -6,7 +6,7 @@ using LeitnerSystem.Domain.ValueObjects;
 
 namespace LeitnerSystem.Domain.Services;
 
-public class CardService
+public class CardService : ICardService
 {
     private readonly ICardRepository _cardRepository;
 
@@ -52,15 +52,6 @@ public class CardService
         await _cardRepository.UpdateAsync(card);
     }
     
-    public async Task PromoteCardAsync(Guid cardId)
-    {
-        var card = await _cardRepository.GetByIdAsync(cardId);
-        if (card == null) throw new CardNotFoundException(cardId);
-        
-        card.Promote();
-        await _cardRepository.UpdateAsync(card);
-    }
-
     public async Task ResetCardAsync(Guid cardId)
     {
         var card = await _cardRepository.GetByIdAsync(cardId);
