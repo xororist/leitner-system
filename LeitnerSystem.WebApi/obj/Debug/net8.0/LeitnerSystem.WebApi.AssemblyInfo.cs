@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("LeitnerSystem.WebApi")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9a04a0aa2fdaf9fc0530ff4fac7a998a01f53c46")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b9be6a81db6286ab81921fbfbbcc6efd00e992c1")]
 [assembly: System.Reflection.AssemblyProductAttribute("LeitnerSystem.WebApi")]
 [assembly: System.Reflection.AssemblyTitleAttribute("LeitnerSystem.WebApi")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
