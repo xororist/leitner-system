@@ -1,0 +1,278 @@
+{
+  "format": 1,
+  "restore": {
+    "/home/hugo/Desktop/ESGI/clean-code/leitner-system/LeitnerSystem.WebApi/LeitnerSystem.WebApi.csproj": {}
+  },
+  "projects": {
+    "/home/hugo/Desktop/ESGI/clean-code/leitner-system/LeitnerSystem.Application/LeitnerSystem.Application.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/hugo/Desktop/ESGI/clean-code/leitner-system/LeitnerSystem.Application/LeitnerSystem.Application.csproj",
+        "projectName": "LeitnerSystem.Application",
+        "projectPath": "/home/hugo/Desktop/ESGI/clean-code/leitner-system/LeitnerSystem.Application/LeitnerSystem.Application.csproj",
+        "packagesPath": "/home/hugo/.nuget/packages/",
+        "outputPath": "/home/hugo/Desktop/ESGI/clean-code/leitner-system/LeitnerSystem.Application/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/hugo/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "/home/hugo/Desktop/ESGI/clean-code/leitner-system/LeitnerSystem.Domain/LeitnerSystem.Domain.csproj": {
+                "projectPath": "/home/hugo/Desktop/ESGI/clean-code/leitner-system/LeitnerSystem.Domain/LeitnerSystem.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "FluentValidation": {
+              "target": "Package",
+              "version": "[11.9.0, )"
+            },
+            "FluentValidation.DependencyInjectionExtensions": {
+              "target": "Package",
+              "version": "[11.9.0, )"
+            },
+            "Microsoft.Extensions.DependencyInjection.Abstractions": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/home/hugo/.dotnet/sdk/8.0.101/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/home/hugo/Desktop/ESGI/clean-code/leitner-system/LeitnerSystem.Domain/LeitnerSystem.Domain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/hugo/Desktop/ESGI/clean-code/leitner-system/LeitnerSystem.Domain/LeitnerSystem.Domain.csproj",
+        "projectName": "LeitnerSystem.Domain",
+        "projectPath": "/home/hugo/Desktop/ESGI/clean-code/leitner-system/LeitnerSystem.Domain/LeitnerSystem.Domain.csproj",
+        "packagesPath": "/home/hugo/.nuget/packages/",
+        "outputPath": "/home/hugo/Desktop/ESGI/clean-code/leitner-system/LeitnerSystem.Domain/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/hugo/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.Extensions.DependencyInjection.Abstractions": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/home/hugo/.dotnet/sdk/8.0.101/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/home/hugo/Desktop/ESGI/clean-code/leitner-system/LeitnerSystem.Infrastructure/LeitnerSystem.Infrastructure.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/hugo/Desktop/ESGI/clean-code/leitner-system/LeitnerSystem.Infrastructure/LeitnerSystem.Infrastructure.csproj",
+        "projectName": "LeitnerSystem.Infrastructure",
+        "projectPath": "/home/hugo/Desktop/ESGI/clean-code/leitner-system/LeitnerSystem.Infrastructure/LeitnerSystem.Infrastructure.csproj",
+        "packagesPath": "/home/hugo/.nuget/packages/",
+        "outputPath": "/home/hugo/Desktop/ESGI/clean-code/leitner-system/LeitnerSystem.Infrastructure/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/hugo/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "/home/hugo/Desktop/ESGI/clean-code/leitner-system/LeitnerSystem.Domain/LeitnerSystem.Domain.csproj": {
+                "projectPath": "/home/hugo/Desktop/ESGI/clean-code/leitner-system/LeitnerSystem.Domain/LeitnerSystem.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.Extensions.DependencyInjection.Abstractions": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "MongoDB.Driver": {
+              "target": "Package",
+              "version": "[2.24.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/home/hugo/.dotnet/sdk/8.0.101/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/home/hugo/Desktop/ESGI/clean-code/leitner-system/LeitnerSystem.WebApi/LeitnerSystem.WebApi.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/hugo/Desktop/ESGI/clean-code/leitner-system/LeitnerSystem.WebApi/LeitnerSystem.WebApi.csproj",
+        "projectName": "LeitnerSystem.WebApi",
+        "projectPath": "/home/hugo/Desktop/ESGI/clean-code/leitner-system/LeitnerSystem.WebApi/LeitnerSystem.WebApi.csproj",
+        "packagesPath": "/home/hugo/.nuget/packages/",
+        "outputPath": "/home/hugo/Desktop/ESGI/clean-code/leitner-system/LeitnerSystem.WebApi/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/hugo/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "/home/hugo/Desktop/ESGI/clean-code/leitner-system/LeitnerSystem.Application/LeitnerSystem.Application.csproj": {
+                "projectPath": "/home/hugo/Desktop/ESGI/clean-code/leitner-system/LeitnerSystem.Application/LeitnerSystem.Application.csproj"
+              },
+              "/home/hugo/Desktop/ESGI/clean-code/leitner-system/LeitnerSystem.Infrastructure/LeitnerSystem.Infrastructure.csproj": {
+                "projectPath": "/home/hugo/Desktop/ESGI/clean-code/leitner-system/LeitnerSystem.Infrastructure/LeitnerSystem.Infrastructure.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.OpenApi": {
+              "target": "Package",
+              "version": "[8.0.1, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[6.4.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/home/hugo/.dotnet/sdk/8.0.101/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
