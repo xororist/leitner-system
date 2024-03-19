@@ -5,7 +5,7 @@ using LeitnerSystem.Application.Interfaces;
 namespace LeitnerSystem.WebApi.Controllers;
 
 [ApiController]
-[Route("[controller]")]
+[Route("cards")]
 public class CardsController : ControllerBase
 {
     private readonly ICardsApplicationService _cardsService;
@@ -14,16 +14,8 @@ public class CardsController : ControllerBase
     {
         _cardsService = cardsService;
     }
-
-    [HttpGet]
-    public async Task<IActionResult> GetCardsForTodayReview()
-    {
-        var cards = await _cardsService.GetCardsForTodayReviewAsync();
-        return Ok(cards);
-    }
     
     [HttpGet]
-    [Route("all")]
     public async Task<IActionResult> GetAllCards()
     {
         var cards = await _cardsService.GetAllCardsAsync();
@@ -46,7 +38,7 @@ public class CardsController : ControllerBase
     }
     
     [HttpPost]
-    [Route("answer")]
+    [Route("answer/{cardId}")]
     public async Task<IActionResult> PromoteCard(Guid cardId, string answer)
     {
          await _cardsService.PromoteCardAsync(cardId, answer);
@@ -61,6 +53,7 @@ public class CardsController : ControllerBase
     }
     
     [HttpDelete]
+    [Route("delete/{cardId}")]
     public async Task<IActionResult> DeleteCard(Guid cardId)
     {
         await _cardsService.DeleteCardAsync(cardId);
