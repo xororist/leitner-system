@@ -16,17 +16,17 @@ public class CardsController : ControllerBase
     }
     
     [HttpGet]
-    public async Task<IActionResult> GetAllCards()
+    public async Task<IActionResult> GetCards([FromQuery] string[] tags)
     {
-        var cards = await _cardsService.GetAllCardsAsync();
-        return Ok(cards);
-    }
-    
-    [HttpGet]
-    [Route("tag")]
-    public async Task<IActionResult> GetCardsByTag(string tag)
-    {
-        var cards = await _cardsService.FindCardsByTagAsync(tag);
+        IEnumerable<CardDto> cards;
+        if (tags.Length == 0)
+        {
+            cards = await _cardsService.GetAllCardsAsync();
+        }
+        else
+        {
+            cards = await _cardsService.FindCardsByTagAsync(tags);
+        }
         return Ok(cards);
     }
     

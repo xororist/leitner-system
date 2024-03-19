@@ -66,9 +66,10 @@ public class CardService : ICardService
         return await _cardRepository.GetCardsNeedingReviewTodayAsync();
     }
     
-    public async Task<IEnumerable<Card>> FindCardsByTagAsync(string tag)
+    public async Task<IEnumerable<Card>> FindCardsByTagAsync(string[] tags)
     {
-        return await _cardRepository.FindCardsByTagAsync(tag);
+        var cards = await _cardRepository.FindCardsByTagsAsync(tags);
+        return cards;
     }
     
     public async Task DeleteCardAsync(Guid cardId)

@@ -41,9 +41,10 @@ public class CardRepository : ICardRepository
         await _cardsCollection.DeleteOneAsync(card => card.Id == id);
     }
 
-    public async Task<IEnumerable<Card>> FindCardsByTagAsync(string tag)
+    public async Task<IEnumerable<Card>> FindCardsByTagsAsync(string[] tags)
     {
-        return await _cardsCollection.Find(card => card.Tag == tag).ToListAsync();
+        var filter = Builders<Card>.Filter.In(card => card.Tag, tags);
+        return await _cardsCollection.Find(filter).ToListAsync();
     }
 
     public async Task<IEnumerable<Card>> GetCardsNeedingReviewTodayAsync()

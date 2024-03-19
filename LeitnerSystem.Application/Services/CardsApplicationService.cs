@@ -75,29 +75,32 @@ public class CardsApplicationService : ICardsApplicationService
 
     public async Task<IEnumerable<CardDto>> GetAllCardsAsync()
     {
-        var cards = await _cardService.GetAllCardsAsync();
+        var cards = await _cardService.GetAllCardsAsync(); 
         return cards.Select(card => new CardDto
         {
             Id = card.Id,
-            Question = card.Question.Text,
-            Answer = card.Answer.Text,
+            Question = card.Question?.Text ?? string.Empty, 
+            Answer = card.Answer?.Text ?? string.Empty, 
             Tag = card.Tag,
             Category = card.Category.ToString(),
-            IsCompleted = card.Metadata.IsCompleted
+            IsCompleted = card.Metadata?.IsCompleted ?? false
         });
     }
 
-    public async Task<IEnumerable<CardDto>> FindCardsByTagAsync(string tag)
+    public async Task<IEnumerable<CardDto>> FindCardsByTagAsync(string[] tags)
     {
-        var cards = await _cardService.FindCardsByTagAsync(tag);
-        return cards.Select(card => new CardDto
-        {
-            Id = card.Id,
-            Question = card.Question.Text,
-            Answer = card.Answer.Text,
-            Tag = card.Tag,
-            Category = card.Category.ToString(),
-            IsCompleted = card.Metadata.IsCompleted
-        });
+        var cards = await _cardService.FindCardsByTagAsync(tags); 
+
+        return cards.Select(card => 
+            new CardDto
+            {
+                Id = card.Id, 
+                Question = card.Question?.Text ?? string.Empty, 
+                Answer = card.Answer?.Text ?? string.Empty,
+                Tag = card.Tag,
+                Category = card.Category.ToString(),
+                IsCompleted = card.Metadata?.IsCompleted ?? false
+            }
+        );
     }
 }
