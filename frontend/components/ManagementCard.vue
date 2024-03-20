@@ -77,7 +77,12 @@ const columns = [{
 },{
   key: 'answer',
   label: 'Answer'
-}, {
+},
+{
+  key: 'isCompleted',
+  label: 'Completed'
+},
+{
   key: 'actions'
 }]
 
@@ -139,7 +144,7 @@ async function updateCard() {
 
   try {
     const url = `http://localhost:4321/cards`; 
-    await axios.put(url, updateCardDto);
+    await axios.patch(url, updateCardDto);
     console.log('Card update OK.');
     await fetchAllQuestions();
     isModalOpen.value = false; 

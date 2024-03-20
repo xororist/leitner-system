@@ -45,7 +45,7 @@ public class CardsController : ControllerBase
         return Ok();
     }
     
-    [HttpPut]
+    [HttpPatch]
     public async Task<IActionResult> UpdateCard(UpdateCardDto updateCardDto)
     {
         await _cardsService.UpdateCardAsync(updateCardDto);
