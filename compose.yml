@@ -19,7 +19,6 @@ services:
       MongoDbSettings__DatabaseName: "leitnersystem-dev"
       MongoDbSettings__CardsCollectionName: "cards"
 
-
   mongo:
     image: mongo
     restart: always
