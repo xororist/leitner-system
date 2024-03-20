@@ -13,7 +13,8 @@ const createQuestionState = reactive({
 
 const modalDisplayState = reactive({
   question: '',
-  tag: ''
+  tag: '',
+  id: ''
 });
 
 const answerState = reactive({
@@ -25,6 +26,7 @@ const openModalWithRowData = (row: any) => {
   answerState.userAnswer = '';
   modalDisplayState.question = row.question;
   modalDisplayState.tag = row.tag;
+  modalDisplayState.id = row.id;
 };
 
 const resetCreateQuestionState = () => {
@@ -40,14 +42,26 @@ async function onSubmitCreateQuestion(event: FormSubmitEvent<any>) {
     const response = await axios.post(`http://localhost:4321/cards`, createQuestionState);
     console.log('Card created with ID:', response.data);
     resetCreateQuestionState();
-    await fetchQuestions();
+    await fetchQuestionsForTodayReview();
   } catch (error) {
     console.error('Error creating card:', error);
   }
 }
 
 async function onSubmitAnswer(event: FormSubmitEvent<any>) {
-  isModalOpen.value = false;
+  try {
+    await axios.post(`http://localhost:4321/cards/answer/${modalDisplayState.id}`, null, {
+      params: {
+        answer: answerState.userAnswer
+      }
+    });
+    console.log('Answer submitted successfully');
+    await fetchQuestionsForTodayReview();
+  } catch (error) {
+    console.error('Error submitting answer:', error);
+  } finally {
+    isModalOpen.value = false; 
+  }
 }
 
 const validateCreateQuestion = (state: any): FormError[] => {
@@ -93,16 +107,16 @@ const filteredRows = computed(() => {
   })
 })
 
-const fetchQuestions = async () => {
+const fetchQuestionsForTodayReview = async () => {
   try {
-    const response = await axios.get(`http://localhost:4321/cards`);
+    const response = await axios.get(`http://localhost:4321/cards/quizz`);
     questions.value = response.data;
   } catch (error) {
     console.error('Failed to fetch questions:', error);
   }
 };
 
-onMounted(fetchQuestions)
+onMounted(fetchQuestionsForTodayReview)
 
 </script>
 
