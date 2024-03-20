@@ -9,6 +9,7 @@ public interface ICardService
     Task ProcessUserAnswerAsync(Guid cardId, string userAnswer);
     Task UpdateCardAsync(Guid cardId, string question, string answer, string tag);
     Task ResetCardAsync(Guid cardId);
+    Task SetCardAnswer(Guid cardId, bool isValid);
     Task<IEnumerable<Card>> GetAllCardsAsync();
     Task<IEnumerable<Card>> GetCardsForReviewAsync();
     Task<IEnumerable<Card>> FindCardsByTagAsync(string[] tags); 

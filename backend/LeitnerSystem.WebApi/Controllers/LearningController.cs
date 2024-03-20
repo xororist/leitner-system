@@ -1,5 +1,5 @@
+using LeitnerSystem.Application.Dto;
 using LeitnerSystem.Application.Interfaces;
-using LeitnerSystem.Domain.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LeitnerSystem.WebApi.Controllers;
@@ -14,7 +14,7 @@ public class LearningController : ControllerBase
     {
         _cardsService = cardsApplicationService;
     }
-    
+
     [HttpGet]
     [Route("quizz")]
     public async Task<IActionResult> GetCardsForTodayReview()
@@ -22,12 +22,11 @@ public class LearningController : ControllerBase
         var cards = await _cardsService.GetCardsForTodayReviewAsync();
         return Ok(cards);
     }
-    
-    [HttpGet]
+
+    [HttpPatch]
     [Route("{cardId}/answer")]
-    public async Task<IActionResult> SetCardAnswerToTrue()
+    public async Task SetCardAnswer(Guid cardId, [FromBody] AnswerUpdateRequestDto request)
     {
-        var cards = await _cardsService.GetCardsForTodayReviewAsync();
-        return Ok(cards);
+        await _cardsService.SetCardAnswerTrueOrFalse(cardId, request.IsValid);
     }
 }

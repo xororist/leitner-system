@@ -51,7 +51,7 @@ public sealed class Card
         Answer = answer ?? throw new ArgumentNullException(nameof(answer));
         Tag = tag;
     }
-
+    
     public void Promote()
     {
         if (Category < Category.DONE)
@@ -59,8 +59,13 @@ public sealed class Card
             Category++;
             Metadata.NextDateQuestionIsAsked(Category);
         }
+        
+        if (Category == Category.DONE)
+        {
+            Metadata.SetAsCompleted();
+        }
     }
-
+    
     public void Reset()
     {
         Category = Category.FIRST;

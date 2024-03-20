@@ -11,5 +11,6 @@ public interface ICardsApplicationService
     Task UpdateCardAsync(UpdateCardDto updateCardDto);
     Task DeleteCardAsync(Guid cardId);
     Task<IEnumerable<CardDto>> GetAllCardsAsync();
+    Task SetCardAnswerTrueOrFalse(Guid cardId, bool isValid);
     Task<IEnumerable<CardDto>> FindCardsByTagAsync(string[] tags); 
 }

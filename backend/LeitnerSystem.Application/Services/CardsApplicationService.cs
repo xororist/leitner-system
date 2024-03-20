@@ -103,4 +103,9 @@ public class CardsApplicationService : ICardsApplicationService
             }
         );
     }
+
+    public async Task SetCardAnswerTrueOrFalse(Guid cardId, bool isValid)
+    {
+        await _cardService.SetCardAnswer(cardId, isValid);
+    }
 }

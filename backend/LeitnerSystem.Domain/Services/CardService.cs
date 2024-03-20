@@ -76,5 +76,10 @@ public class CardService : ICardService
     { 
         await _cardRepository.DeleteAsync(cardId);
     }
+    
+    public async Task SetCardAnswer(Guid cardId, bool isValid)
+    { 
+        await _cardRepository.SetCardAnswer(cardId, isValid);
+    }
 }
 

@@ -11,4 +11,6 @@ public interface ICardRepository
     Task AddAsync(Card card);
     Task UpdateAsync(Card card);
     Task DeleteAsync(Guid id);
+    Task SetCardAnswer(Guid id, bool isValid);
+    
 }

@@ -54,4 +54,15 @@ public class CardRepository : ICardRepository
         var today = DateTime.UtcNow.Date;
         return await _cardsCollection.Find(card => card.Metadata.NextDateQuestion <= today && !card.Metadata.IsCompleted).ToListAsync();
     }
+    
+    public async Task SetCardAnswer(Guid id, bool isValid)
+    { 
+        var card = await GetByIdAsync(id);
+        if (!isValid)
+        {
+            card.Reset();
+        }
+        card.Promote();
+        await _cardsCollection.ReplaceOneAsync(c => c.Id == card.Id, card);
+    }
 }
