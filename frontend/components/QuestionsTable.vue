@@ -1,8 +1,11 @@
 <script setup lang="ts">
 import type { FormError, FormSubmitEvent } from '#ui/types'
+import axios from "axios";
 
 const isModalOpen = ref(false);
 const isSlideOpen = ref(false);
+const loading = ref(false);
+
 
 const createQuestionState = reactive({
   question: '',
@@ -33,8 +36,16 @@ const resetCreateQuestionState = () => {
 };
 
 async function onSubmitCreateQuestion(event: FormSubmitEvent<any>) {
+  console.log(createQuestionState)
   isSlideOpen.value = false;
-  resetCreateQuestionState()
+  try {
+    const response = await axios.post(`http://localhost:4321/cards`, createQuestionState);
+    console.log('Card created with ID:', response.data);
+    resetCreateQuestionState();
+    await fetchQuestions();
+  } catch (error) {
+    console.error('Error creating card:', error);
+  }
 }
 
 async function onSubmitAnswer(event: FormSubmitEvent<any>) {
@@ -68,56 +79,39 @@ const columns = [{
   key: 'actions'
 }]
 
-const questions = [{
-  id: 1,
-  question: 'Lindsay Walton',
-  category: 'Front-end Developer',
-  tag: 'lindsay.walton@example.com',
-}, {
-  id: 2,
-  question: 'Courtney Henry',
-  category: 'Designer',
-  tag: 'courtney.henry@example.com',
-}, {
-  id: 3,
-  question: 'Tom Cook',
-  category: 'Director of Product',
-  tag: 'tom.cook@example.com',
-}, {
-  id: 4,
-  question: 'Whitney Francis',
-  category: 'Copywriter',
-  tag: 'whitney.francis@example.com',
-}, {
-  id: 5,
-  question: 'Leonard Krasner',
-  category: 'Senior Designer',
-  tag: 'leonard.krasner@example.com',
-}, {
-  id: 6,
-  question: 'Floyd Miles',
-  category: 'Principal Designer',
-  tag: 'floyd.miles@example.com',
-}]
+const questions = ref([])
 
 const q = ref('')
 
 const filteredRows = computed(() => {
   if (!q.value) {
-    return questions
+    return questions.value
   }
 
-  return questions.filter((question) => {
+  return questions.value.filter((question) => {
     return Object.values(question).some((value) => {
       return String(value).toLowerCase().includes(q.value.toLowerCase())
     })
   })
 })
 
+const fetchQuestions = async () => {
+  loading.value = true;
+  try {
+    const response = await axios.get(`http://localhost:4321/cards`);
+    questions.value = response.data;
+  } catch (error) {
+    console.error('Failed to fetch questions:', error);
+  } finally {
+    loading.value = false;
+  }
+};
+
+onMounted(fetchQuestions);
+
 </script>
 
 <template>
-  <UContainer>
   <div class="flex px-3 py-3.5 border-b border-gray-200 dark:border-gray-700">
     <p class="font-medium mr-2">Today's questions for review</p>
     <UInput v-model="q" placeholder="Filter questions..." />
@@ -146,11 +140,21 @@ const filteredRows = computed(() => {
       </UForm>
     </UCard>
   </USlideover>
-  <UTable :rows="filteredRows" :columns="columns">
-    <template #actions-data="{ row }">
-      <UButton variant="soft" label="Answer" @click="() => openModalWithRowData(row)" />
-    </template>
-  </UTable>
+  <template>
+    <UTable
+        :rows="filteredRows"
+        :columns="columns"
+        :loading="loading"
+        :loading-state="{ icon: 'i-heroicons-arrow-path-20-solid', label: 'Loading...' }"
+        :progress="{ color: 'primary', animation: 'carousel' }"
+        :empty-state="questions.length === 0 && !loading ? { icon: 'i-heroicons-circle-stack-20-solid', label: 'No items.' } : null"
+        class="w-full"
+    >
+      <template #actions-data="{ row }">
+        <UButton variant="soft" label="Answer" @click="() => openModalWithRowData(row)" />
+      </template>
+    </UTable>
+  </template>
   <UModal v-model="isModalOpen">
     <UCard>
       <UForm :validate="validateUserAnswer" :state="answerState" class="space-y-4" @submit="onSubmitAnswer">
@@ -166,6 +170,5 @@ const filteredRows = computed(() => {
       </UForm>
     </UCard>
   </UModal>
-  </UContainer>
 </template>
 

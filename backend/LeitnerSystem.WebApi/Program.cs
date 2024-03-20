@@ -12,6 +12,17 @@ if (mongoDbSettings is null)
     throw new InvalidOperationException("MongoDbSettings configuration section is missing or not properly configured.");
 }
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: "AllowAllOrigins",
+        policy =>
+        {
+            policy.AllowAnyOrigin()
+                .AllowAnyHeader()
+                .AllowAnyMethod();
+        });
+});
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
@@ -32,5 +43,7 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.MapControllers(); 
+
+app.UseCors("AllowAllOrigins");
 
 app.Run();

@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { FormError, FormSubmitEvent } from '#ui/types'
+import axios from "axios";
 
 const isModalOpen = ref(false);
 const isSlideOpen = ref(false);
@@ -124,21 +125,21 @@ const filteredRows = computed(() => {
 })
 
 const onDeleteQuestion = (questionId: number) => {
-  // Confirm deletion
   if (!confirm('Are you sure you want to delete this question?')) {
     return;
+
   }
-
-  // Filter out the question by ID
-  people = people.filter(question => question.id !== questionId);
-
-  // Optionally, close the modal if open
+  try {
+    axios.delete(`http://localhost:4321/cards/${questionId}`);
+  } catch (error) {
+    console.error('Failed to delete questions:', error);
+  }
   isModalOpen.value = false;
 };
+
 </script>
 
 <template>
-  <UContainer>
     <div class="flex px-3 py-3.5 border-b border-gray-200 dark:border-gray-700">
       <UInput v-model="q" placeholder="Filter questions..." />
       <UButton label="Add Question" @click="isSlideOpen = true" class="ml-2"/>
@@ -187,6 +188,5 @@ const onDeleteQuestion = (questionId: number) => {
         </UForm>
       </UCard>
     </UModal>
-  </UContainer>
 </template>
 

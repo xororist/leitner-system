@@ -1,4 +1,6 @@
 <script setup lang="ts">
+const toast = useToast()
+
 const links = [{
   label: 'Home',
   icon: 'i-heroicons-home',
@@ -11,15 +13,13 @@ const links = [{
 </script>
 
 <template>
-  <UContainer>
-    <UPageHeader
+  <UPageHeader
         title="Leitner System"
         description="A simple app to implement the leitner system"
-        :links="[{ label: 'GitHub', color: 'white', to: 'https://github.com/nuxt/ui-pro/blob/dev/components/page/PageHeader.vue', target: '_blank',},
+        :links="[{ label: 'GitHub', color: 'white', to: 'https://github.com/xororist/leitner-system', target: '_blank',},
                  { label: 'Leitner System', to: 'https://en.wikipedia.org/wiki/Leitner_system', target: '_blank'}]"
     />
     <UHorizontalNavigation :links="links" class="border-b border-gray-200 dark:border-gray-800" />
-  </UContainer>
   <NuxtPage />
 </template>
 
