@@ -1,5 +1,7 @@
 <template>
-  <UContainer>
-    <NuxtLayout/>
-  </UContainer>
+  <div>
+    <UContainer>
+      <NuxtLayout/>
+    </UContainer>
+  </div>
 </template>

@@ -1,0 +1,16 @@
+/home/hugo/Desktop/ESGI/clean-code/leitner-system/LeitnerSystem.Infrastructure/bin/Debug/net8.0/LeitnerSystem.Infrastructure.deps.json
+/home/hugo/Desktop/ESGI/clean-code/leitner-system/LeitnerSystem.Infrastructure/bin/Debug/net8.0/LeitnerSystem.Infrastructure.dll
+/home/hugo/Desktop/ESGI/clean-code/leitner-system/LeitnerSystem.Infrastructure/bin/Debug/net8.0/LeitnerSystem.Infrastructure.pdb
+/home/hugo/Desktop/ESGI/clean-code/leitner-system/LeitnerSystem.Infrastructure/bin/Debug/net8.0/LeitnerSystem.Domain.dll
+/home/hugo/Desktop/ESGI/clean-code/leitner-system/LeitnerSystem.Infrastructure/bin/Debug/net8.0/LeitnerSystem.Domain.pdb
+/home/hugo/Desktop/ESGI/clean-code/leitner-system/LeitnerSystem.Infrastructure/obj/Debug/net8.0/LeitnerSystem.Infrastructure.csproj.AssemblyReference.cache
+/home/hugo/Desktop/ESGI/clean-code/leitner-system/LeitnerSystem.Infrastructure/obj/Debug/net8.0/LeitnerSystem.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+/home/hugo/Desktop/ESGI/clean-code/leitner-system/LeitnerSystem.Infrastructure/obj/Debug/net8.0/LeitnerSystem.Infrastructure.AssemblyInfoInputs.cache
+/home/hugo/Desktop/ESGI/clean-code/leitner-system/LeitnerSystem.Infrastructure/obj/Debug/net8.0/LeitnerSystem.Infrastructure.AssemblyInfo.cs
+/home/hugo/Desktop/ESGI/clean-code/leitner-system/LeitnerSystem.Infrastructure/obj/Debug/net8.0/LeitnerSystem.Infrastructure.csproj.CoreCompileInputs.cache
+/home/hugo/Desktop/ESGI/clean-code/leitner-system/LeitnerSystem.Infrastructure/obj/Debug/net8.0/LeitnerSystem.Infrastructure.sourcelink.json
+/home/hugo/Desktop/ESGI/clean-code/leitner-system/LeitnerSystem.Infrastructure/obj/Debug/net8.0/LeitnerSystem.Infrastructure.csproj.CopyComplete
+/home/hugo/Desktop/ESGI/clean-code/leitner-system/LeitnerSystem.Infrastructure/obj/Debug/net8.0/LeitnerSystem.Infrastructure.dll
+/home/hugo/Desktop/ESGI/clean-code/leitner-system/LeitnerSystem.Infrastructure/obj/Debug/net8.0/refint/LeitnerSystem.Infrastructure.dll
+/home/hugo/Desktop/ESGI/clean-code/leitner-system/LeitnerSystem.Infrastructure/obj/Debug/net8.0/LeitnerSystem.Infrastructure.pdb
+/home/hugo/Desktop/ESGI/clean-code/leitner-system/LeitnerSystem.Infrastructure/obj/Debug/net8.0/ref/LeitnerSystem.Infrastructure.dll

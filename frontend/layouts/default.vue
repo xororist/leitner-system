@@ -1,6 +1,4 @@
 <script setup lang="ts">
-const toast = useToast()
-
 const links = [{
   label: 'Home',
   icon: 'i-heroicons-home',
@@ -22,7 +20,3 @@ const links = [{
     <UHorizontalNavigation :links="links" class="border-b border-gray-200 dark:border-gray-800" />
   <NuxtPage />
 </template>
-
-<style scoped>
-
-</style>

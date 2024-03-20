@@ -1,0 +1,13 @@
+/home/hugo/Desktop/ESGI/clean-code/leitner-system/LeitnerSystem.Domain/bin/Debug/net8.0/LeitnerSystem.Domain.deps.json
+/home/hugo/Desktop/ESGI/clean-code/leitner-system/LeitnerSystem.Domain/bin/Debug/net8.0/LeitnerSystem.Domain.dll
+/home/hugo/Desktop/ESGI/clean-code/leitner-system/LeitnerSystem.Domain/bin/Debug/net8.0/LeitnerSystem.Domain.pdb
+/home/hugo/Desktop/ESGI/clean-code/leitner-system/LeitnerSystem.Domain/obj/Debug/net8.0/LeitnerSystem.Domain.csproj.AssemblyReference.cache
+/home/hugo/Desktop/ESGI/clean-code/leitner-system/LeitnerSystem.Domain/obj/Debug/net8.0/LeitnerSystem.Domain.GeneratedMSBuildEditorConfig.editorconfig
+/home/hugo/Desktop/ESGI/clean-code/leitner-system/LeitnerSystem.Domain/obj/Debug/net8.0/LeitnerSystem.Domain.AssemblyInfoInputs.cache
+/home/hugo/Desktop/ESGI/clean-code/leitner-system/LeitnerSystem.Domain/obj/Debug/net8.0/LeitnerSystem.Domain.AssemblyInfo.cs
+/home/hugo/Desktop/ESGI/clean-code/leitner-system/LeitnerSystem.Domain/obj/Debug/net8.0/LeitnerSystem.Domain.csproj.CoreCompileInputs.cache
+/home/hugo/Desktop/ESGI/clean-code/leitner-system/LeitnerSystem.Domain/obj/Debug/net8.0/LeitnerSystem.Domain.sourcelink.json
+/home/hugo/Desktop/ESGI/clean-code/leitner-system/LeitnerSystem.Domain/obj/Debug/net8.0/LeitnerSystem.Domain.dll
+/home/hugo/Desktop/ESGI/clean-code/leitner-system/LeitnerSystem.Domain/obj/Debug/net8.0/refint/LeitnerSystem.Domain.dll
+/home/hugo/Desktop/ESGI/clean-code/leitner-system/LeitnerSystem.Domain/obj/Debug/net8.0/LeitnerSystem.Domain.pdb
+/home/hugo/Desktop/ESGI/clean-code/leitner-system/LeitnerSystem.Domain/obj/Debug/net8.0/ref/LeitnerSystem.Domain.dll

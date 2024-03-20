@@ -29,8 +29,7 @@ public class CardRepository : ICardRepository
 
     public async Task<Card> GetByIdAsync(Guid id)
     {
-        var bsonId = new BsonBinaryData(id, GuidRepresentation.Standard);
-        return await _cardsCollection.Find(card => card.Id == bsonId).FirstOrDefaultAsync();
+        return await _cardsCollection.Find<Card>(card => card.Id == id).FirstOrDefaultAsync();
     }
 
     public async Task UpdateAsync(Card card)

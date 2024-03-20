@@ -124,7 +124,7 @@ onMounted(fetchQuestionsForTodayReview)
   <div class="flex px-3 py-3.5 border-b border-gray-200 dark:border-gray-700">
     <p class="font-medium mr-2">Today's questions for review</p>
     <UInput v-model="q" placeholder="Filter questions..." />
-    <UButton label="Add Question" @click="isSlideOpen = true" class="ml-2"/>
+    <UButton variant="soft" label="Add Question" @click="isSlideOpen = true" class="ml-2"/>
   </div>
   <USlideover v-model="isSlideOpen">
     <UCard class="flex flex-col flex-1" :ui="{ body: { base: 'flex-1' }, ring: '', divide: 'divide-y divide-gray-100 dark:divide-gray-800' }">
@@ -163,7 +163,7 @@ onMounted(fetchQuestionsForTodayReview)
         <UFormGroup label="Answer" name="userAnswer">
           <UInput v-model="answerState.userAnswer" />
         </UFormGroup>
-        <UButton variant="soft" type="submit">
+        <UButton type="submit">
           Submit Answer
         </UButton>
       </UForm>

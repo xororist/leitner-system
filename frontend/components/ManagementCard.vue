@@ -13,7 +13,8 @@ const createQuestionState = reactive({
 
 const modalDisplayState = reactive({
   question: '',
-  tag: ''
+  tag: '',
+  id: ''
 });
 
 const answerState = reactive({
@@ -22,9 +23,10 @@ const answerState = reactive({
 
 const openModalWithRowData = (row: any) => {
   isModalOpen.value = true;
-  answerState.userAnswer = '';
-  modalDisplayState.question = row.question;
-  modalDisplayState.tag = row.tag;
+  modalDisplayState.id = row.id; 
+  createQuestionState.question = row.question;
+  createQuestionState.answer = row.answer;
+  createQuestionState.tag = row.tag;
 };
 
 const resetCreateQuestionState = () => {
@@ -122,6 +124,31 @@ const onDeleteQuestion = async (questionId: number) => {
   }
 };
 
+async function updateCard() {
+  if (!modalDisplayState.id) {
+    console.error('No card ID specified for update.');
+    return;
+  }
+
+  const updateCardDto = {
+    CardId: modalDisplayState.id,
+    Question: createQuestionState.question,
+    Answer: createQuestionState.answer,
+    Tag: createQuestionState.tag
+  };
+
+  try {
+    const url = `http://localhost:4321/cards`; 
+    await axios.put(url, updateCardDto);
+    console.log('Card update OK.');
+    await fetchAllQuestions();
+    isModalOpen.value = false; 
+  } catch (error) {
+    console.error('Error updating card:', error);
+  }
+}
+
+
 onMounted(fetchAllQuestions)
 
 </script>
@@ -130,7 +157,7 @@ onMounted(fetchAllQuestions)
     <div class="flex px-3 py-3.5 border-b border-gray-200 dark:border-gray-700">
       <p class="font-medium mr-2">All your questions</p>
       <UInput v-model="q" placeholder="Filter questions..." />
-      <UButton label="Add Question" @click="isSlideOpen = true" class="ml-2"/>
+      <UButton variant="soft" label="Add Question" @click="isSlideOpen = true" class="ml-2"/>
     </div>
     <USlideover v-model="isSlideOpen">
       <UCard class="flex flex-col flex-1" :ui="{ body: { base: 'flex-1' }, ring: '', divide: 'divide-y divide-gray-100 dark:divide-gray-800' }">
@@ -163,16 +190,20 @@ onMounted(fetchAllQuestions)
     </UTable>
     <UModal v-model="isModalOpen">
       <UCard>
-        <UForm :validate="validateUserAnswer" :state="answerState" class="space-y-4" @submit="onSubmitAnswer">
+        <UForm :validate="validateCreateQuestion" :state="createQuestionState" class="space-y-4" @submit="updateCard">
           <p class="font-medium">{{ modalDisplayState.question }}</p>
           <UBadge color="blue" variant="subtle">{{ modalDisplayState.tag }}</UBadge>
           <UDivider/>
-          <UFormGroup label="Answer" name="userAnswer">
-            <UInput v-model="answerState.userAnswer" />
+          <UFormGroup label="Question" name="question">
+            <UInput v-model="createQuestionState.question" />
           </UFormGroup>
-          <UButton type="submit">
-            Submit Answer
-          </UButton>
+          <UFormGroup label="Answer" name="answer">
+            <UInput v-model="createQuestionState.answer" />
+          </UFormGroup>
+          <UFormGroup label="Tag" name="tag">
+            <UInput v-model="createQuestionState.tag" />
+          </UFormGroup>
+          <UButton type="submit">Update Question</UButton>
         </UForm>
       </UCard>
     </UModal>

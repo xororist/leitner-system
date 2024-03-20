@@ -21,6 +21,11 @@ builder.Services.AddCors(options =>
                 .AllowAnyHeader()
                 .AllowAnyMethod();
         });
+    
+    options.AddPolicy("AllowSpecificOrigin",
+        builder => builder.WithOrigins("http://localhost:3000") 
+            .AllowAnyMethod()
+            .AllowAnyHeader());
 });
 
 builder.Services.AddEndpointsApiExplorer();
@@ -45,5 +50,6 @@ app.UseHttpsRedirection();
 app.MapControllers(); 
 
 app.UseCors("AllowAllOrigins");
+app.UseCors("AllowSpecificOrigin");
 
 app.Run();

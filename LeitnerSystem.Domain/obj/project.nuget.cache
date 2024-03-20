@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "G74QOJLYnxqjkZj4s9CgA5b5eBpc9au3xXVuOrmHAILI6OLOjShijvbj3Gt25F+naQtf2KGn84Kwd1SVJi6tNg==",
+  "success": true,
+  "projectFilePath": "/home/hugo/Desktop/ESGI/clean-code/leitner-system/LeitnerSystem.Domain/LeitnerSystem.Domain.csproj",
+  "expectedPackageFiles": [
+    "/home/hugo/.nuget/packages/microsoft.extensions.dependencyinjection.abstractions/8.0.0/microsoft.extensions.dependencyinjection.abstractions.8.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}
