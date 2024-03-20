@@ -4,8 +4,6 @@ import axios from "axios";
 
 const isModalOpen = ref(false);
 const isSlideOpen = ref(false);
-const loading = ref(false);
-
 
 const createQuestionState = reactive({
   question: '',
@@ -96,18 +94,15 @@ const filteredRows = computed(() => {
 })
 
 const fetchQuestions = async () => {
-  loading.value = true;
   try {
     const response = await axios.get(`http://localhost:4321/cards`);
     questions.value = response.data;
   } catch (error) {
     console.error('Failed to fetch questions:', error);
-  } finally {
-    loading.value = false;
   }
 };
 
-onMounted(fetchQuestions);
+onMounted(fetchQuestions)
 
 </script>
 
@@ -140,21 +135,11 @@ onMounted(fetchQuestions);
       </UForm>
     </UCard>
   </USlideover>
-  <template>
-    <UTable
-        :rows="filteredRows"
-        :columns="columns"
-        :loading="loading"
-        :loading-state="{ icon: 'i-heroicons-arrow-path-20-solid', label: 'Loading...' }"
-        :progress="{ color: 'primary', animation: 'carousel' }"
-        :empty-state="questions.length === 0 && !loading ? { icon: 'i-heroicons-circle-stack-20-solid', label: 'No items.' } : null"
-        class="w-full"
-    >
-      <template #actions-data="{ row }">
-        <UButton variant="soft" label="Answer" @click="() => openModalWithRowData(row)" />
-      </template>
-    </UTable>
-  </template>
+  <UTable :rows="filteredRows" :columns="columns">
+    <template #actions-data="{ row }">
+      <UButton variant="soft" label="Answer" @click="() => openModalWithRowData(row)" />
+    </template>
+  </UTable>
   <UModal v-model="isModalOpen">
     <UCard>
       <UForm :validate="validateUserAnswer" :state="answerState" class="space-y-4" @submit="onSubmitAnswer">

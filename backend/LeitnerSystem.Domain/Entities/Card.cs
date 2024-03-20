@@ -1,11 +1,15 @@
 using LeitnerSystem.Domain.Enums;
 using LeitnerSystem.Domain.ValueObjects;
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
 
 namespace LeitnerSystem.Domain.Entities;
 
 public sealed class Card
 {
-    public Guid Id { get; init; }
+    [BsonId]
+    [BsonRepresentation(BsonType.String)]
+    public Guid Id { get; private set; }
     public Question Question { get; private set; }
     public Answer Answer { get; private set; }
     public string Tag { get; private set; }

@@ -6,7 +6,7 @@ const links = [{
 }, {
   label: 'Card Management',
   icon: 'i-heroicons-command-line',
-  to: '/management'
+  to: '/management',
 }]
 </script>
 

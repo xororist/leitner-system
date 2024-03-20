@@ -2,6 +2,7 @@ using LeitnerSystem.Domain.Entities;
 using LeitnerSystem.Domain.Interfaces;
 using MongoDB.Driver;
 using LeitnerSystem.Infrastructure.MongoDatabase;
+using MongoDB.Bson;
 
 namespace LeitnerSystem.Infrastructure.Repositories;
 
@@ -28,7 +29,8 @@ public class CardRepository : ICardRepository
 
     public async Task<Card> GetByIdAsync(Guid id)
     {
-        return await _cardsCollection.Find(card => card.Id == id).FirstOrDefaultAsync();
+        var bsonId = new BsonBinaryData(id, GuidRepresentation.Standard);
+        return await _cardsCollection.Find(card => card.Id == bsonId).FirstOrDefaultAsync();
     }
 
     public async Task UpdateAsync(Card card)
@@ -38,7 +40,8 @@ public class CardRepository : ICardRepository
 
     public async Task DeleteAsync(Guid id)
     {
-        await _cardsCollection.DeleteOneAsync(card => card.Id == id);
+        var filter = Builders<Card>.Filter.Eq(c => c.Id, id);
+        await _cardsCollection.DeleteOneAsync(filter);
     }
 
     public async Task<IEnumerable<Card>> FindCardsByTagsAsync(string[] tags)

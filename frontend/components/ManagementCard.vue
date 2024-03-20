@@ -34,10 +34,17 @@ const resetCreateQuestionState = () => {
 };
 
 async function onSubmitCreateQuestion(event: FormSubmitEvent<any>) {
+  console.log(createQuestionState)
   isSlideOpen.value = false;
-  resetCreateQuestionState()
+  try {
+    const response = await axios.post(`http://localhost:4321/cards`, createQuestionState);
+    console.log('Card created with ID:', response.data);
+    resetCreateQuestionState()
+    await fetchAllQuestions()
+  } catch (error) {
+    console.error('Error creating card:', error);
+  }
 }
-
 async function onSubmitAnswer(event: FormSubmitEvent<any>) {
   isModalOpen.value = false;
 }
@@ -72,75 +79,56 @@ const columns = [{
   key: 'actions'
 }]
 
-let people = [{
-  id: 1,
-  question: 'Lindsay Walton',
-  category: 'Front-end Developer',
-  tag: 'lindsay.walton@example.com',
-  answer: 'Answer'
-}, {
-  id: 2,
-  question: 'Courtney Henry',
-  category: 'Designer',
-  tag: 'courtney.henry@example.com',
-  answer: 'Answer'
-}, {
-  id: 3,
-  question: 'Tom Cook',
-  category: 'Director of Product',
-  tag: 'tom.cook@example.com',
-  answer: 'Answer'
-}, {
-  id: 4,
-  question: 'Whitney Francis',
-  category: 'Copywriter',
-  tag: 'whitney.francis@example.com',
-  answer: 'Answer'
-}, {
-  id: 5,
-  question: 'Leonard Krasner',
-  category: 'Senior Designer',
-  tag: 'leonard.krasner@example.com',
-  answer: 'Answer'
-}, {
-  id: 6,
-  question: 'Floyd Miles',
-  category: 'Principal Designer',
-  tag: 'floyd.miles@example.com',
-  answer: 'Answer'
-}]
 
 const q = ref('')
 
 const filteredRows = computed(() => {
   if (!q.value) {
-    return people
+    return questions.value
   }
 
-  return people.filter((person) => {
-    return Object.values(person).some((value) => {
+  return questions.value.filter((question) => {
+    return Object.values(question).some((value) => {
       return String(value).toLowerCase().includes(q.value.toLowerCase())
     })
   })
 })
 
-const onDeleteQuestion = (questionId: number) => {
+const questions = ref([])
+
+async function fetchAllQuestions() {
+  try {
+    const response = await axios.get('http://localhost:4321/cards');
+    console.log(response.data);
+    questions.value = response.data
+  } catch (error) {
+    console.error('Failed to fetch questions:', error);
+  }
+}
+
+const onDeleteQuestion = async (questionId: number) => {
   if (!confirm('Are you sure you want to delete this question?')) {
     return;
+  }
 
-  }
   try {
-    axios.delete(`http://localhost:4321/cards/${questionId}`);
+    const url = `http://localhost:4321/cards/delete/${questionId}`;
+    await axios.delete(url);
+    console.log('Question deleted successfully');
+    isModalOpen.value = false;
+    await fetchAllQuestions()
   } catch (error) {
-    console.error('Failed to delete questions:', error);
+    console.error('Failed to delete question:', error);
   }
-  isModalOpen.value = false;
 };
+
+onMounted(fetchAllQuestions)
 
 </script>
 
 <template>
     <div class="flex px-3 py-3.5 border-b border-gray-200 dark:border-gray-700">
+      <p class="font-medium mr-2">All your questions</p>
       <UInput v-model="q" placeholder="Filter questions..." />
       <UButton label="Add Question" @click="isSlideOpen = true" class="ml-2"/>
     </div>
@@ -169,8 +157,8 @@ const onDeleteQuestion = (questionId: number) => {
     </USlideover>
     <UTable :rows="filteredRows" :columns="columns">
       <template #actions-data="{ row }">
-        <UButton  color="blue" variant="soft" label="Edit" @click="() => openModalWithRowData(row)" />
-        <UButton  color="red" variant="soft" label="Delete" @click="() => onDeleteQuestion(row.id)" class="ml-2" />
+        <UButton color="blue" variant="soft" label="Edit" @click="() => openModalWithRowData(row)" />
+        <UButton color="red" variant="soft" label="Delete" @click="() => onDeleteQuestion(row.id)" class="ml-2" />
       </template>
     </UTable>
     <UModal v-model="isModalOpen">
