@@ -2,7 +2,7 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeitnerSystem.Domain", "LeitnerSystem.Domain\LeitnerSystem.Domain.csproj", "{5BE30E0E-609F-4330-B9F0-F698332F4A0B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{7FE70013-2F18-44FF-859F-74747B6D51DA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "tests\Tests.csproj", "{7FE70013-2F18-44FF-859F-74747B6D51DA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeitnerSystem.Application", "LeitnerSystem.Application\LeitnerSystem.Application.csproj", "{1B093FB9-DEC5-41B8-971B-0C631C611F97}"
 EndProject
