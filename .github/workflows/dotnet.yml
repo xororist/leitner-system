@@ -27,7 +27,7 @@ jobs:
       with:
         name: build-artifacts
         path: backend/bin/
-        
+
   test:
     needs: build
     runs-on: ubuntu-latest
