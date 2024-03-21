@@ -19,13 +19,15 @@ jobs:
     - name: Restore
       run: cd backend && dotnet restore
     - name: Build
-      run: cd backend && dotnet build --no-restore
+      run: |
+        cd backend
+        dotnet build --no-restore -o bin/
     - name: Archive artifacts
       uses: actions/upload-artifact@v4
       with:
         name: build-artifacts
         path: backend/bin/
-
+        
   test:
     needs: build
     runs-on: ubuntu-latest
