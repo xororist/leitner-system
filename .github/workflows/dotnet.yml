@@ -19,14 +19,12 @@ jobs:
     - name: Restore
       run: cd backend && dotnet restore
     - name: Build
-      run: |
-        cd backend
-        dotnet build --no-restore -o bin/
+      run: cd backend && dotnet build --no-restore
     - name: Archive artifacts
       uses: actions/upload-artifact@v4
       with:
         name: build-artifacts
-        path: backend/bin/
+        path: backend/
 
   test:
     needs: build
@@ -42,7 +40,7 @@ jobs:
       uses: actions/download-artifact@v4
       with:
         name: build-artifacts
-        path: backend/bin/
+        path: backend/
     - name: Unit Testing Domain
       run: cd backend/tests && dotnet test --no-build --verbosity normal
 
