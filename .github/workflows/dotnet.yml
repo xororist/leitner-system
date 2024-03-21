@@ -61,7 +61,7 @@ jobs:
         with:
           context: ./backend
           push: true
-          tags: leitner/dotnet-app:${{ github.sha }}
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/dotnet-app:${{ github.sha }}
           build-args: |
             BUILDPLATFORM=linux/amd64
             TARGETARCH=amd64
@@ -83,6 +83,6 @@ jobs:
         with:
           context: ./frontend
           push: true
-          tags: leitner/nuxt-app:${{ github.sha }}
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/nuxt-app:${{ github.sha }}
           build-args: |
             NODE_VERSION=21.7.1
