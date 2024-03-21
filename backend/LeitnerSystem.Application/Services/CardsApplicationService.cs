@@ -39,11 +39,12 @@ public class CardsApplicationService : ICardsApplicationService
         return cards.Select(card => new CardDto
         {
             Id = card.Id,
-            Question = card.Question.Text,
-            Answer = card.Answer.Text,
+            Question = card.Question?.Text ?? string.Empty,
+            Answer = card.Answer?.Text ?? string.Empty,
             Tag = card.Tag,
             Category = card.Category.ToString(),
-            IsCompleted = card.Metadata.IsCompleted
+            IsCompleted = card.Metadata.IsCompleted,
+            NextReviewDate = DateOnly.FromDateTime(card.Metadata.NextDateQuestion).ToString(),
         });
     }
 

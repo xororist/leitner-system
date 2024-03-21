@@ -1,6 +1,7 @@
 using LeitnerSystem.Application.Dto;
 using LeitnerSystem.Application.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using System.Globalization;
 
 namespace LeitnerSystem.WebApi.Controllers;
 
@@ -17,10 +18,25 @@ public class LearningController : ControllerBase
 
     [HttpGet]
     [Route("quizz")]
-    public async Task<IActionResult> GetCardsForTodayReview()
+    public async Task<IActionResult> GetCardsForTodayReview([FromQuery] string? date = null)
     {
-        var cards = await _cardsService.GetCardsForTodayReviewAsync();
-        return Ok(cards);
+        if (!string.IsNullOrEmpty(date))
+        {
+            if (DateTime.TryParseExact(date, "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime tempDate))
+            {
+                var cards = await _cardsService.GetAllCardsAsync();
+                var filteredCards = cards.Where(
+                    d => DateOnly.FromDateTime(DateTime.Parse(d.NextReviewDate)) == DateOnly.FromDateTime(tempDate.Date));
+                return Ok(filteredCards);
+            }
+            else
+            {
+                return BadRequest("Provide a date in format: yyyy-MM-dd.");
+            }
+        }
+
+        var cardsForReviewToday = await _cardsService.GetCardsForTodayReviewAsync();
+        return Ok(cardsForReviewToday);
     }
 
     [HttpPatch]

@@ -7,6 +7,16 @@ namespace Tests.Domain;
 
 public class CardTests
 {
+    [Fact]
+    public void Constructor_InitializesWithExpectedValues()
+    {
+        var metadata = new Metadata();
+
+        Assert.Equal(DateTime.Now.Date, metadata.CreationDate);
+        Assert.Equal(DateTime.Now.Date.AddDays(1), metadata.NextDateQuestion);
+        Assert.False(metadata.IsCompleted);
+    }
+
     [Theory]
     [InlineData(Category.FIRST, 1)] 
     [InlineData(Category.SECOND, 2)] 
@@ -119,5 +129,14 @@ public class CardTests
 
         // Assert
         card.Category.Should().Be(Category.FIRST);
+    }
+
+    [Fact]
+    public void Set_As_Completed_Sets_Is_Completed_To_True()
+    {
+        var metadata = new Metadata();
+        metadata.SetAsCompleted();
+
+        Assert.True(metadata.IsCompleted);
     }
 }

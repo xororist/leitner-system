@@ -57,7 +57,21 @@ public class CardRepository : ICardRepository
         var today = DateTime.UtcNow.Date;
         return await _cardsCollection.Find(card => card.Metadata.NextDateQuestion <= today && !card.Metadata.IsCompleted).ToListAsync();
     }
-    
+
+    public async Task<IEnumerable<Card>> GetCardsForReviewAsync(DateOnly reviewDate)
+    {
+        DateTime startOfReviewDate = reviewDate.ToDateTime(new TimeOnly(0, 0), DateTimeKind.Utc); 
+
+        DateTime endOfReviewDate = startOfReviewDate.AddDays(1); 
+
+        var cardsForReview = await _cardsCollection.Find(card =>
+            card.Metadata.NextDateQuestion >= startOfReviewDate &&
+            card.Metadata.NextDateQuestion < endOfReviewDate &&
+            !card.Metadata.IsCompleted).ToListAsync();
+
+        return cardsForReview;
+    }
+
     public async Task SetCardAnswer(Guid id, bool isValid)
     { 
         var card = await GetByIdAsync(id);
@@ -67,5 +81,10 @@ public class CardRepository : ICardRepository
         }
         card.Promote();
         await _cardsCollection.ReplaceOneAsync(c => c.Id == card.Id, card);
+    }
+
+    public Task<IEnumerable<Card>> GetCardsForReviewAsync(DateTime reviewDate)
+    {
+        throw new NotImplementedException();
     }
 }
