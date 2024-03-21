@@ -13,4 +13,5 @@ COPY . .
 
 ENV NODE_ENV development
 
+# The application is run in dev mode to be able to use nuxt ui pro without licence
 CMD ["yarn", "dev"]
