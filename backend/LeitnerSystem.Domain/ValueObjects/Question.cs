@@ -2,7 +2,7 @@ namespace LeitnerSystem.Domain.ValueObjects;
 
 public class Question
 {
-    public string Text { get; private set; }
+    public string Text { get; set; }
 
     public Question(string text)
     {

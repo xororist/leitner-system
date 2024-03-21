@@ -83,7 +83,7 @@ public class CardsApplicationService : ICardsApplicationService
             Answer = card.Answer?.Text ?? string.Empty, 
             Tag = card.Tag,
             Category = card.Category.ToString(),
-            IsCompleted = card.Metadata?.IsCompleted ?? false
+            IsCompleted = card.Metadata.IsCompleted
         });
     }
 

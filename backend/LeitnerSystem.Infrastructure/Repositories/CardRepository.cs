@@ -24,6 +24,9 @@ public class CardRepository : ICardRepository
 
     public async Task<IEnumerable<Card>> GetAllCardsAsync()
     {
+        var documents = await _cardsCollection.Find(new BsonDocument()).ToListAsync();
+        var collection = _cardsCollection.AsQueryable();
+        var cards = await _cardsCollection.Find(Builders<Card>.Filter.Empty).ToListAsync();
         return await _cardsCollection.Find(_ => true).ToListAsync();
     }
 

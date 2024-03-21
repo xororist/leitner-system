@@ -8,14 +8,14 @@ namespace Tests.Domain;
 public class CardTests
 {
     [Theory]
-    [InlineData(Category.FIRST, 0)] 
-    [InlineData(Category.SECOND, 1)] 
-    [InlineData(Category.THIRD, 2)] 
-    [InlineData(Category.FOURTH, 4)] 
-    [InlineData(Category.FIFTH, 8)]
-    [InlineData(Category.SIXTH, 16)]
-    [InlineData(Category.SEVENTH, 32)]
-    public void Card_Next_Review_Date_Should_Be_Set_Correctly_After_Promotion(Category nextCategory, int daysUntilNextReview)
+    [InlineData(Category.FIRST, 1)] 
+    [InlineData(Category.SECOND, 2)] 
+    [InlineData(Category.THIRD, 4)] 
+    [InlineData(Category.FOURTH, 8)] 
+    [InlineData(Category.FIFTH, 16)]
+    [InlineData(Category.SIXTH, 32)]
+    [InlineData(Category.SEVENTH, 64)]
+    public void Card_Next_Review_Date_Should_Be_Set_Correctly_After_Promotion(Category nextCategory, int delay)
     {
         // Arrange
         var card = new Card(new Question("Simple Question"), new Answer("Simple Answer"), "Simple Tag");
@@ -28,7 +28,7 @@ public class CardTests
         }
 
         // Assert
-        var expectedReviewDate = today.AddDays(daysUntilNextReview);
+        var expectedReviewDate = today.AddDays(delay);
         card.Metadata.NextDateQuestion.Date.Should().Be(expectedReviewDate);
     }
     
@@ -44,7 +44,7 @@ public class CardTests
             card.Promote();
         }
         card.Promote();
-        var expectedReviewDate = DateTime.Now.Date.AddDays(64);
+        var expectedReviewDate = DateTime.Now.Date.AddDays(128);
 
         // Assert
         card.Metadata.NextDateQuestion.Should().Be(expectedReviewDate);

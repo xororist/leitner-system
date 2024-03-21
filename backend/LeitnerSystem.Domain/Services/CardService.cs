@@ -24,7 +24,8 @@ public class CardService : ICardService
     
     public async Task<IEnumerable<Card>> GetAllCardsAsync()
     {
-        return await _cardRepository.GetAllCardsAsync();
+        var cards = await _cardRepository.GetAllCardsAsync();
+        return cards;
     }
     
     public async Task ProcessUserAnswerAsync(Guid cardId, string userAnswer)

@@ -9,12 +9,12 @@ public sealed class Card
 {
     [BsonId]
     [BsonRepresentation(BsonType.String)]
-    public Guid Id { get; private set; }
-    public Question Question { get; private set; }
-    public Answer Answer { get; private set; }
-    public string Tag { get; private set; }
-    public Category Category { get; private set; }
-    public Metadata Metadata { get; }
+    public Guid Id { get; set; }
+    public Question Question { get; set; }
+    public Answer Answer { get; set; }
+    public string Tag { get; set; }
+    public Category Category { get; set; }
+    public Metadata Metadata { get; set; }
 
     public Card(Question question, Answer answer, string tag)
     {
