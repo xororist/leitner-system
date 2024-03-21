@@ -83,6 +83,10 @@ const columns = [{
   label: 'Completed'
 },
 {
+  key: 'nextReviewDate',
+  label: 'Next Review'
+},
+{
   key: 'actions'
 }]
 

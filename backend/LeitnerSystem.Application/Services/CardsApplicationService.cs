@@ -83,7 +83,8 @@ public class CardsApplicationService : ICardsApplicationService
             Answer = card.Answer?.Text ?? string.Empty, 
             Tag = card.Tag,
             Category = card.Category.ToString(),
-            IsCompleted = card.Metadata.IsCompleted
+            IsCompleted = card.Metadata.IsCompleted,
+            NextReviewDate = DateOnly.FromDateTime(card.Metadata.NextDateQuestion).ToString(),
         });
     }
 
@@ -99,7 +100,8 @@ public class CardsApplicationService : ICardsApplicationService
                 Answer = card.Answer?.Text ?? string.Empty,
                 Tag = card.Tag,
                 Category = card.Category.ToString(),
-                IsCompleted = card.Metadata?.IsCompleted ?? false
+                IsCompleted = card.Metadata.IsCompleted,
+                NextReviewDate = DateOnly.FromDateTime(card.Metadata.NextDateQuestion).ToString(),
             }
         );
     }

@@ -8,4 +8,5 @@ public class CardDto
     public string Tag { get; set; }
     public string Category { get; set; }
     public bool IsCompleted { get; set; }
+    public string NextReviewDate { get; set; }
 }
