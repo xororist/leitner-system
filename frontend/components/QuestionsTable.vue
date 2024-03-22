@@ -51,7 +51,7 @@ async function onSubmitCreateQuestion() {
 
 async function onSubmitAnswer() {
   try {
-    await axios.post(`http://localhost:4321/cards/answer/${modalDisplayState.id}`, null, {
+    await axios.post(`http://localhost:8080/cards/answer/${modalDisplayState.id}`, null, {
       params: {
         answer: answerState.userAnswer
       }
@@ -95,7 +95,7 @@ const filteredRows = computed(() => {
 
 const fetchQuestionsForTodayReview = async () => {
   try {
-    const response = await axios.get(`http://localhost:4321/cards/quizz`);
+    const response = await axios.get(`http://localhost:8080/cards/quizz`);
     questions.value = response.data;
   } catch (error) {
     console.error('Failed to fetch questions:', error);

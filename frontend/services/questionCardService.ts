@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:4321/cards';
+const API_URL = 'http://localhost:8080/cards';
 
 export default {
     async fetchAll() {
