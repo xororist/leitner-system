@@ -31,7 +31,7 @@ public class LearningController : ControllerBase
             }
             else
             {
-                return BadRequest("Provide a date in format: yyyy-MM-dd.");
+                return BadRequest("Provide a date in format: yyyy-MM-dd."); 
             }
         }
 
@@ -41,8 +41,16 @@ public class LearningController : ControllerBase
 
     [HttpPatch]
     [Route("{cardId}/answer")]
-    public async Task SetCardAnswer(Guid cardId, [FromBody] AnswerUpdateRequestDto request)
+    public async Task<IActionResult> SetCardAnswer(Guid cardId, [FromBody] AnswerUpdateRequestDto request)
     {
-        await _cardsService.SetCardAnswerTrueOrFalse(cardId, request.IsValid);
+        try
+        {
+            await _cardsService.SetCardAnswerTrueOrFalse(cardId, request.IsValid);
+            return NoContent(); 
+        }
+        catch (KeyNotFoundException) 
+        {
+            return NotFound(); 
+        }       
     }
 }

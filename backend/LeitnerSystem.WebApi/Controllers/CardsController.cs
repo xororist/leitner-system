@@ -14,7 +14,7 @@ public class CardsController : ControllerBase
     {
         _cardsService = cardsService;
     }
-    
+
     [HttpGet]
     public async Task<IActionResult> GetCards([FromQuery] string[] tags)
     {
@@ -29,34 +29,34 @@ public class CardsController : ControllerBase
         }
         return Ok(cards);
     }
-    
+
     [HttpPost]
     public async Task<IActionResult> CreateCard(CreateCardDto createCardDto)
     {
         var cardId = await _cardsService.CreateCardAsync(createCardDto);
-        return Ok(cardId);
+        return CreatedAtAction(nameof(GetCards), new { id = cardId }, cardId);
     }
-    
+
     [HttpPost]
     [Route("answer/{cardId}")]
     public async Task<IActionResult> PromoteCard(Guid cardId, string answer)
     {
-         await _cardsService.PromoteCardAsync(cardId, answer);
-        return Ok();
+        await _cardsService.PromoteCardAsync(cardId, answer);
+        return NoContent();
     }
-    
+
     [HttpPatch]
     public async Task<IActionResult> UpdateCard(UpdateCardDto updateCardDto)
     {
         await _cardsService.UpdateCardAsync(updateCardDto);
-        return Ok();
+        return NoContent();
     }
-    
+
     [HttpDelete]
     [Route("delete/{cardId}")]
     public async Task<IActionResult> DeleteCard(Guid cardId)
     {
         await _cardsService.DeleteCardAsync(cardId);
-        return Ok();
+        return NoContent();
     }
 }
