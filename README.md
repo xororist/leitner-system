@@ -27,7 +27,7 @@ http://localhost:3000/
 
 The url for the backend application that handle the endpoints for API calls is:
 ```
-http://localhost:4321/cards
+http://localhost:8080/cards
 ```
 
 ## API
@@ -41,35 +41,35 @@ GET http://localhost:4321/cards
 
 To get all cards with a specific tag
 ```
-POST http://localhost:4321/cards?tags=Architecture
+POST http://localhost:8080/cards?tags=Architecture
 ```
 
 To create a card
 ```
-POST http://localhost:4321/cards
+POST http://localhost:8080/cards
 ```
 
 To update a question/answer/tag of a card
 ```
-PATCH http://localhost:4321/cards
+PATCH http://localhost:8080/cards
 ```
 
 To answer a card
 ```
-POST http://localhost:4321/cards/answer/{cardId}
+POST http://localhost:8080/cards/answer/{cardId}
 ```
 
 To delete a card
 ```
-DELETE http://localhost:4321/cards/delete/{cardId}
+DELETE http://localhost:8080/cards/delete/{cardId}
 ```
 
 To get all cards for review today
 ```
-GET http://localhost:4321/cards/quizz
+GET http://localhost:8080/cards/quizz
 ```
 
 To force the validation of a card
 ```
-PATCH http://localhost:4321/cards/{cardId}/answer
+PATCH http://localhost:8080/cards/{cardId}/answer
 ```
