@@ -1,6 +1,14 @@
 # Leitner System
 
+## Summary
 Studies project to implement the leitner system for learning, following Clean Code & Hexagonal Architecture principles.
+
+This project has been developed with:
+- .NET 8 / C#
+- Nuxt3 / Typescript
+- Docker
+- MongoDB
+- Github Actions
 
 To run the app use:
 
