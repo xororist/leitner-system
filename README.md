@@ -30,6 +30,10 @@ The url for the backend application that handle the endpoints for API calls is:
 http://localhost:8080/cards
 ```
 
+## Github Actions
+
+The pipeline build the .net 8 application, then execute the test and finally build and push two separate images for frontend and backend to dockerhub.
+
 ## API
 
 ### Availble endpoints:
