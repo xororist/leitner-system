@@ -1,9 +1,12 @@
 <script setup lang="ts">
-import type { FormError, FormSubmitEvent } from '#ui/types'
 import axios from "axios";
+import validateCreateQuestion from "~/utils/validateQuestionCreateForm";
+import validateUserAnswer from "~/utils/validateQuestionCreateForm";
+import questionCardService from "~/services/questionCardService";
 
 const isModalOpen = ref(false);
 const isSlideOpen = ref(false);
+const questions = ref([])
 
 const createQuestionState = reactive({
   question: '',
@@ -35,20 +38,18 @@ const resetCreateQuestionState = () => {
   createQuestionState.tag = '';
 };
 
-async function onSubmitCreateQuestion(event: FormSubmitEvent<any>) {
-  console.log(createQuestionState)
+async function onSubmitCreateQuestion() {
   isSlideOpen.value = false;
   try {
-    const response = await axios.post(`http://localhost:4321/cards`, createQuestionState);
-    console.log('Card created with ID:', response.data);
-    resetCreateQuestionState();
-    await fetchQuestionsForTodayReview();
+    await questionCardService.create(createQuestionState)
+    resetCreateQuestionState()
+    await fetchQuestionsForTodayReview()
   } catch (error) {
     console.error('Error creating card:', error);
   }
 }
 
-async function onSubmitAnswer(event: FormSubmitEvent<any>) {
+async function onSubmitAnswer() {
   try {
     await axios.post(`http://localhost:4321/cards/answer/${modalDisplayState.id}`, null, {
       params: {
@@ -64,20 +65,6 @@ async function onSubmitAnswer(event: FormSubmitEvent<any>) {
   }
 }
 
-const validateCreateQuestion = (state: any): FormError[] => {
-  const errors = []
-  if (!state.question) errors.push({ path: 'question', message: 'Required' })
-  if (!state.answer) errors.push({ path: 'answer', message: 'Required' })
-  if (!state.tag) errors.push({ path: 'tag', message: 'Required' })
-  return errors
-}
-
-const validateUserAnswer = (state: any): FormError[] => {
-  const errors = []
-  if (!state.userAnswer) errors.push({ path: 'userAnswer', message: 'Required' })
-  return errors
-}
-
 const columns = [{
   key: 'question',
   label: 'Question'
@@ -91,7 +78,6 @@ const columns = [{
   key: 'actions'
 }]
 
-const questions = ref([])
 
 const q = ref('')
 

@@ -1,9 +1,10 @@
 <script setup lang="ts">
-import type { FormError, FormSubmitEvent } from '#ui/types'
-import axios from "axios";
+import questionCardService from "~/services/questionCardService";
+import validateCreateQuestion from "~/utils/validateQuestionCreateForm";
 
 const isModalOpen = ref(false);
 const isSlideOpen = ref(false);
+const questions = ref([])
 
 const createQuestionState = reactive({
   question: '',
@@ -15,10 +16,6 @@ const modalDisplayState = reactive({
   question: '',
   tag: '',
   id: ''
-});
-
-const answerState = reactive({
-  userAnswer: ''
 });
 
 const openModalWithRowData = (row: any) => {
@@ -34,36 +31,6 @@ const resetCreateQuestionState = () => {
   createQuestionState.answer = '';
   createQuestionState.tag = '';
 };
-
-async function onSubmitCreateQuestion(event: FormSubmitEvent<any>) {
-  console.log(createQuestionState)
-  isSlideOpen.value = false;
-  try {
-    const response = await axios.post(`http://localhost:4321/cards`, createQuestionState);
-    console.log('Card created with ID:', response.data);
-    resetCreateQuestionState()
-    await fetchAllQuestions()
-  } catch (error) {
-    console.error('Error creating card:', error);
-  }
-}
-async function onSubmitAnswer(event: FormSubmitEvent<any>) {
-  isModalOpen.value = false;
-}
-
-const validateCreateQuestion = (state: any): FormError[] => {
-  const errors = []
-  if (!state.question) errors.push({ path: 'question', message: 'Required' })
-  if (!state.answer) errors.push({ path: 'answer', message: 'Required' })
-  if (!state.tag) errors.push({ path: 'tag', message: 'Required' })
-  return errors
-}
-
-const validateUserAnswer = (state: any): FormError[] => {
-  const errors = []
-  if (!state.userAnswer) errors.push({ path: 'userAnswer', message: 'Required' })
-  return errors
-}
 
 const columns = [{
   key: 'question',
@@ -90,7 +57,6 @@ const columns = [{
   key: 'actions'
 }]
 
-
 const q = ref('')
 
 const filteredRows = computed(() => {
@@ -105,27 +71,32 @@ const filteredRows = computed(() => {
   })
 })
 
-const questions = ref([])
-
 async function fetchAllQuestions() {
   try {
-    const response = await axios.get('http://localhost:4321/cards');
-    console.log(response.data);
+    const response = await questionCardService.fetchAll()
     questions.value = response.data
   } catch (error) {
     console.error('Failed to fetch questions:', error);
   }
 }
 
-const onDeleteQuestion = async (questionId: number) => {
-  if (!confirm('Are you sure you want to delete this question?')) {
+async function onSubmitCreateQuestion() {
+  isSlideOpen.value = false;
+  try {
+    await questionCardService.create(createQuestionState);
+    resetCreateQuestionState()
+    await fetchAllQuestions()
+  } catch (error) {
+    console.error('Error creating card:', error);
+  }
+}
+
+const onDeleteQuestion = async (questionId: string) => {
+  if (!confirm('Confirm to delete this question?')) {
     return;
   }
-
   try {
-    const url = `http://localhost:4321/cards/delete/${questionId}`;
-    await axios.delete(url);
-    console.log('Question deleted successfully');
+    await questionCardService.delete(questionId);
     isModalOpen.value = false;
     await fetchAllQuestions()
   } catch (error) {
@@ -147,16 +118,13 @@ async function updateCard() {
   };
 
   try {
-    const url = `http://localhost:4321/cards`; 
-    await axios.patch(url, updateCardDto);
-    console.log('Card update OK.');
+    await questionCardService.update(updateCardDto)
     await fetchAllQuestions();
-    isModalOpen.value = false; 
+    isModalOpen.value = false;
   } catch (error) {
     console.error('Error updating card:', error);
   }
 }
-
 
 onMounted(fetchAllQuestions)
 
@@ -200,9 +168,6 @@ onMounted(fetchAllQuestions)
     <UModal v-model="isModalOpen">
       <UCard>
         <UForm :validate="validateCreateQuestion" :state="createQuestionState" class="space-y-4" @submit="updateCard">
-          <p class="font-medium">{{ modalDisplayState.question }}</p>
-          <UBadge color="blue" variant="subtle">{{ modalDisplayState.tag }}</UBadge>
-          <UDivider/>
           <UFormGroup label="Question" name="question">
             <UInput v-model="createQuestionState.question" />
           </UFormGroup>
@@ -217,4 +182,3 @@ onMounted(fetchAllQuestions)
       </UCard>
     </UModal>
 </template>
-
