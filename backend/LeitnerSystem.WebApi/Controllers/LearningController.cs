@@ -16,6 +16,12 @@ public class LearningController : ControllerBase
         _cardsService = cardsApplicationService;
     }
 
+
+    /// <summary>
+    /// Get all cards for today's review. If date is provided, it will get all cards for this date
+    /// </summary>
+    /// <param name="date">A date to search for cards that will be reviewed on this date.</param>
+    /// <returns></returns>
     [HttpGet]
     [Route("quizz")]
     public async Task<IActionResult> GetCardsForTodayReview([FromQuery] string? date = null)
@@ -39,6 +45,12 @@ public class LearningController : ControllerBase
         return Ok(cardsForReviewToday);
     }
 
+    /// <summary>
+    /// Force a valid answer to a card or send a false answer.
+    /// </summary>
+    /// <param name="cardId">Card identified by his id.</param>
+    /// <param name="request">Send a boolean to valid or send a false answer to a question.</param>
+    /// <returns></returns>
     [HttpPatch]
     [Route("{cardId}/answer")]
     public async Task<IActionResult> SetCardAnswer(Guid cardId, [FromBody] AnswerUpdateRequestDto request)
