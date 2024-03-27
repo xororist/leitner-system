@@ -32,7 +32,7 @@ public class LearningController : ControllerBase
             {
                 var cards = await _cardsService.GetAllCardsAsync();
                 var filteredCards = cards.Where(
-                    d => DateOnly.FromDateTime(DateTime.Parse(d.NextReviewDate)) == DateOnly.FromDateTime(tempDate.Date));
+                    d => DateOnly.FromDateTime(DateTime.Parse(d.NextReviewDate, new CultureInfo("fr-FR"))) == DateOnly.FromDateTime(tempDate.Date));
                 return Ok(filteredCards);
             }
             else
