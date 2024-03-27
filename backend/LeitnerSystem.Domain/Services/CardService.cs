@@ -37,19 +37,19 @@ public class CardService : ICardService
         await _cardRepository.UpdateAsync(card);
     }
 
-    public async Task<Card> AddCardAsync(string questionText, string answerText, string tag)
+    public async Task<Card> AddCardAsync(string question, string answer, string tag)
     {
-        var card = CardFactory.CreateCard(questionText, answerText, tag);
+        var card = CardFactory.CreateCard(question, answer, tag);
         await _cardRepository.AddAsync(card);
         return card;
     }
 
-    public async Task UpdateCardAsync(Guid cardId, string questionText, string answerText, string tag)
+    public async Task UpdateCardAsync(Guid cardId, string question, string answer, string tag)
     {
         var card = await _cardRepository.GetByIdAsync(cardId);
         if (card == null) throw new CardNotFoundException(cardId);
 
-        card.Update(new Question(questionText), new Answer(answerText), tag);
+        card.Update(new Question(question), new Answer(answer), tag);
         await _cardRepository.UpdateAsync(card);
     }
     
