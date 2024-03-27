@@ -1,6 +1,6 @@
 import type {FormError} from "#ui/types";
 
-interface userAnswer {
+interface UserAnswer {
     UserAnswer?: string;
 }
 
