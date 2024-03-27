@@ -2,7 +2,12 @@
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=xororist_leitner-system&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=xororist_leitner-system)
 [![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=xororist_leitner-system&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=xororist_leitner-system)
 [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=xororist_leitner-system&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=xororist_leitner-system)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=xororist_leitner-system&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=xororist_leitner-system)
+[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=xororist_leitner-system&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=xororist_leitner-system)
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=xororist_leitner-system&metric=bugs)](https://sonarcloud.io/summary/new_code?id=xororist_leitner-system)
+[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=xororist_leitner-system&metric=ncloc)](https://sonarcloud.io/summary/new_code?id=xororist_leitner-system)
 ## Summary
+
 Studies project to implement the leitner system for learning, following Clean Code & Hexagonal Architecture principles.
 
 This project has been developed with:
