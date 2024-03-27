@@ -1,7 +1,7 @@
 import type {FormError} from "#ui/types";
 
 interface userAnswer {
-    userAnswer?: string;
+    UserAnswer?: string;
 }
 
 function validateUserAnswer(state: userAnswer): FormError[] {
