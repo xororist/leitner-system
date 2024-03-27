@@ -43,9 +43,9 @@ public class CardRepository : ICardRepository
         await _cardsCollection.DeleteOneAsync(filter);
     }
 
-    public async Task<IEnumerable<Card>> FindCardsByTagsAsync(string[] tags)
+    public async Task<IEnumerable<Card>> FindCardsByTagsAsync(string[] tag)
     {
-        var filter = Builders<Card>.Filter.In(card => card.Tag, tags);
+        var filter = Builders<Card>.Filter.In(card => card.Tag, tag);
         return await _cardsCollection.Find(filter).ToListAsync();
     }
 
@@ -78,10 +78,5 @@ public class CardRepository : ICardRepository
         }
         card.Promote();
         await _cardsCollection.ReplaceOneAsync(c => c.Id == card.Id, card);
-    }
-
-    public Task<IEnumerable<Card>> GetCardsForReviewAsync(DateTime reviewDate)
-    {
-        throw new NotImplementedException();
     }
 }
