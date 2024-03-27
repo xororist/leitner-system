@@ -1,5 +1,5 @@
 # Leitner System
-
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=xororist_leitner-system&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=xororist_leitner-system)
 ## Summary
 Studies project to implement the leitner system for learning, following Clean Code & Hexagonal Architecture principles.
 
