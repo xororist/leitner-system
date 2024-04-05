@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import axios from "axios";
-import { validateCreateQuestion, validateUserAnswer } from "~/utils/validateQuestionCreateForm";
+import validateCreateQuestion from "~/utils/validateQuestionCreateForm";
+import validateUserAnswer from "~/utils/validateUserAnswer";
 import questionCardService from "~/services/questionCardService";
 
 const isModalOpen = ref(false);
