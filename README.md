@@ -47,7 +47,7 @@ The pipeline build the .net 8 application, then execute the test and finally bui
 
 To get all cards
 ```
-GET http://localhost:4321/cards
+GET http://localhost:8080/cards
 ```
 
 To get all cards with a specific tag
